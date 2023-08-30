@@ -18,6 +18,10 @@ export namespace Components {
         "data": string;
     }
 }
+export interface CmWeatherCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCmWeatherElement;
+}
 declare global {
     interface HTMLCmMainwweatherElement extends Components.CmMainwweather, HTMLStencilElement {
     }
@@ -61,6 +65,7 @@ declare namespace LocalJSX {
     }
     interface CmWeather {
         "data"?: string;
+        "onDayclicked"?: (event: CmWeatherCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
         "cm-mainwweather": CmMainwweather;

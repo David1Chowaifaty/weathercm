@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { Weather } from '../../model/Weather';
 import { daysOfWeek } from '../../utils/utils';
 
@@ -10,7 +10,10 @@ import { daysOfWeek } from '../../utils/utils';
 export class CmMainwweather {
   @Prop({ reflect: true, mutable: true }) data: string;
   @State() weather: Weather;
-
+  @Listen('dayclicked', { target: 'body' })
+  changeData(ev: CustomEvent) {
+    this.data = ev.detail;
+  }
   componentWillLoad() {
     if (this.data !== '') {
       this.weather = JSON.parse(this.data);
@@ -20,7 +23,6 @@ export class CmMainwweather {
   @Watch('data')
   changedData() {
     this.weather = JSON.parse(this.data) as Weather;
-    console.log(this.weather);
   }
   renderDate(date: Date) {
     const currentDate = new Date().getDay();
@@ -37,20 +39,37 @@ export class CmMainwweather {
     } else {
       return (
         <Host>
-          <div>
-            <p>{this.renderDate(this.weather.date)}</p>
-            <p>{this.weather.description}</p>
-            <div>
-              <cm-sunmoonimage></cm-sunmoonimage>
-              <p>
-                <cm-temperature temp={this.weather.temp_max.toString()}></cm-temperature>
+          <div class="weather-info">
+            <div class="weather-header">
+              <div class="weather-icon">
+                <cm-sunmoonimage class="icon" />
+              </div>
+              <h2 class="date">{this.renderDate(this.weather.date)}</h2>
+            </div>
+            <p class="weather-description">{this.weather.description}</p>
+            <div class={'weather-container'}>
+              <div class="sunmoon">
+                <cm-sunmoonimage class="icon" />
+              </div>
+              <p class="temperature-range">
+                <cm-temperature class="temp-max" temp={this.weather.temp_max.toString()} />
+                /
+                <cm-temperature class="temp-min" temp={this.weather.temp_min.toString()} />
               </p>
             </div>
           </div>
-          <div>
-            <p>
-              RealFeal <span>{this.weather.feels_like}&#176;</span>
-            </p>
+          <div class="extra-info">
+            <div class="details">
+              <p class="real-feel">
+                RealFeel <cm-temperature class="feels-like" temp={this.weather.feels_like.toString()} />
+              </p>
+              <p class="humidity">
+                Humidity <span class="humidity-value">{this.weather.humidity}</span>
+              </p>
+              <p class="wind">
+                Wind <span class="wind-speed">{this.weather.windspeed}</span>
+              </p>
+            </div>
           </div>
         </Host>
       );

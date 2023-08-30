@@ -1,7 +1,112 @@
 :host {
-  display: block;
-  border-radius: 40px;
-  background: #f3f3f3;
-  width: 80%;
-  height: 365px;
+  display: flex;
+  border-radius: 20px;
+  background: #f8fafc;
+  height: min-content;
+  width: 30rem;
+  max-width: 85%;
+  margin: 0 auto;
+  align-items: center;
+  padding: 1rem;
+  color: #475569;
+  position: relative;
+  gap: 20px;
+}
+.weather-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-header {
+  display: flex;
+  align-items: center;
+}
+
+.weather-icon {
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.temperature-range {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.temp-max {
+  font-size: 26px;
+}
+.temp-min {
+  color: #64748b;
+}
+.weather-description {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.extra-info {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.weather-container {
+  display: flex;
+  align-items: center;
+}
+.sunmoon .icon {
+  display: none;
+}
+
+.real-feel,
+.humidity,
+.wind {
+  margin-bottom: 5px;
+}
+
+.humidity-value,
+.wind-speed {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 768px) {
+  :host {
+    justify-content: space-between;
+    width: 90%;
+  }
+  .weather-icon {
+    display: none;
+  }
+  .weather-container {
+    gap: 20px;
+  }
+  .sunmoon .icon {
+    display: block;
+    height: 60px;
+    width: 60px;
+  }
+  .extra-info {
+    display: block;
+    flex: 1;
+    max-width: 40%;
+  }
+  .details > p {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  :host {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
 }
