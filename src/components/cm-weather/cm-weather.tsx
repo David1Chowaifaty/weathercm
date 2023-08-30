@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'cm-weather',
@@ -6,13 +6,13 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class CmWeather {
-
+  @Prop({ reflect: true }) title: string = '';
   render() {
     return (
       <Host>
         <slot></slot>
+        <p>{this.title}</p>
       </Host>
     );
   }
-
 }
