@@ -11,7 +11,7 @@ export namespace Components {
     interface CmSunmoonimage {
     }
     interface CmWeather {
-        "title": string;
+        "data": string;
     }
 }
 declare global {
@@ -45,7 +45,7 @@ declare namespace LocalJSX {
     interface CmSunmoonimage {
     }
     interface CmWeather {
-        "title"?: string;
+        "data"?: string;
     }
     interface IntrinsicElements {
         "cm-mainwweather": CmMainwweather;
