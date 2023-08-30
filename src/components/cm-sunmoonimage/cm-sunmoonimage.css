@@ -7,17 +7,5 @@
   align-items: center;
 }
 
-.icon {
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-}
 
-.sun {
-  background-image: url('path-to-sun-icon.png');
-}
-
-.moon {
-  background-image: url('path-to-moon-icon.png');
-}
 
