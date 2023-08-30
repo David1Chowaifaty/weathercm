@@ -9,17 +9,25 @@ import { Weather } from '../../model/Weather';
 export class CmWeather {
   @Prop({ reflect: true, mutable: true }) data: string;
   @State() weather: Weather;
-  @Watch('data')
-  setWeather() {
-    this.weather = JSON.parse(this.data);
+
+  componentWillLoad() {
+    if (this.data !== '') {
+      this.weather = JSON.parse(this.data);
+    }
   }
+
+  @Watch('data')
+  changedData() {
+    this.weather = JSON.parse(this.data) as Weather;
+    console.log(this.weather);
+  }
+
   render() {
     if (this.weather === undefined) {
       return null;
     } else {
       return (
         <Host>
-          <slot></slot>
           <p>{this.weather.description}</p>
         </Host>
       );
