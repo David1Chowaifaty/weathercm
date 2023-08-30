@@ -8,6 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface CmMainwweather {
     }
+    interface CmSunmoonimage {
+    }
     interface CmWeather {
         "title": string;
     }
@@ -19,6 +21,12 @@ declare global {
         prototype: HTMLCmMainwweatherElement;
         new (): HTMLCmMainwweatherElement;
     };
+    interface HTMLCmSunmoonimageElement extends Components.CmSunmoonimage, HTMLStencilElement {
+    }
+    var HTMLCmSunmoonimageElement: {
+        prototype: HTMLCmSunmoonimageElement;
+        new (): HTMLCmSunmoonimageElement;
+    };
     interface HTMLCmWeatherElement extends Components.CmWeather, HTMLStencilElement {
     }
     var HTMLCmWeatherElement: {
@@ -27,17 +35,21 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "cm-mainwweather": HTMLCmMainwweatherElement;
+        "cm-sunmoonimage": HTMLCmSunmoonimageElement;
         "cm-weather": HTMLCmWeatherElement;
     }
 }
 declare namespace LocalJSX {
     interface CmMainwweather {
     }
+    interface CmSunmoonimage {
+    }
     interface CmWeather {
         "title"?: string;
     }
     interface IntrinsicElements {
         "cm-mainwweather": CmMainwweather;
+        "cm-sunmoonimage": CmSunmoonimage;
         "cm-weather": CmWeather;
     }
 }
@@ -46,6 +58,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "cm-mainwweather": LocalJSX.CmMainwweather & JSXBase.HTMLAttributes<HTMLCmMainwweatherElement>;
+            "cm-sunmoonimage": LocalJSX.CmSunmoonimage & JSXBase.HTMLAttributes<HTMLCmSunmoonimageElement>;
             "cm-weather": LocalJSX.CmWeather & JSXBase.HTMLAttributes<HTMLCmWeatherElement>;
         }
     }
