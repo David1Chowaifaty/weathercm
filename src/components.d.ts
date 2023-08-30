@@ -6,56 +6,45 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface CmSunmoonimage {
+    }
+    interface CmWeather {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLCmSunmoonimageElement extends Components.CmSunmoonimage, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLCmSunmoonimageElement: {
+        prototype: HTMLCmSunmoonimageElement;
+        new (): HTMLCmSunmoonimageElement;
+    };
+    interface HTMLCmWeatherElement extends Components.CmWeather, HTMLStencilElement {
+    }
+    var HTMLCmWeatherElement: {
+        prototype: HTMLCmWeatherElement;
+        new (): HTMLCmWeatherElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "cm-sunmoonimage": HTMLCmSunmoonimageElement;
+        "cm-weather": HTMLCmWeatherElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface CmSunmoonimage {
+    }
+    interface CmWeather {
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "cm-sunmoonimage": CmSunmoonimage;
+        "cm-weather": CmWeather;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "cm-sunmoonimage": LocalJSX.CmSunmoonimage & JSXBase.HTMLAttributes<HTMLCmSunmoonimageElement>;
+            "cm-weather": LocalJSX.CmWeather & JSXBase.HTMLAttributes<HTMLCmWeatherElement>;
         }
     }
 }
