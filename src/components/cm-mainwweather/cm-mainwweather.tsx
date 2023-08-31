@@ -14,6 +14,10 @@ export class CmMainwweather {
   changeData(ev: CustomEvent) {
     this.data = ev.detail;
   }
+  @Listen('itemClicked', { target: 'body' })
+  dropDownData(ev: CustomEvent) {
+    this.data = ev.detail;
+  }
   componentWillLoad() {
     if (this.data !== '') {
       this.weather = JSON.parse(this.data);

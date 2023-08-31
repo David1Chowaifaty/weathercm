@@ -41,6 +41,8 @@
       align-items: center;
       background: #f8fafcd7;
       padding: 0 1rem;
+      justify-content: space-between;
+      z-index: 50;
     }
 
     header h3 {
@@ -61,6 +63,7 @@ justify-content: space-evenly;
 <body>
   <header>
     <h3>Weather app</h3>
+    <cm-menu></cm-menu>
   </header>
   <main>
     <section id="main">
@@ -73,6 +76,7 @@ justify-content: space-evenly;
   <script>
     const main = document.querySelector('#main');
     const others = document.querySelector("#others");
+    const menu=document.querySelector("cm-menu")
     const apikey = "2cb0ef490184d5a576043727f00691b5"
     let lat = 33.8333;
     let lon = 35.8333;
@@ -114,10 +118,14 @@ justify-content: space-evenly;
           const cmWeather = document.createElement('cm-weather');
           cmWeather.data = JSON.stringify(d);
           others.appendChild(cmWeather)
+          const menuItem=document.createElement("cm-menu-item")
+          menuItem.data=JSON.stringify(d);
+          menu.appendChild(menuItem);
         }
       })
     }
     fetchWeather(lat, lon)
+
   </script>
 </body>
 

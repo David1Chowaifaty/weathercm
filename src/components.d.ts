@@ -10,8 +10,10 @@ export namespace Components {
         "data": string;
     }
     interface CmMenu {
+        "opened": boolean;
     }
     interface CmMenuItem {
+        "data": string;
     }
     interface CmSunmoonimage {
     }
@@ -21,6 +23,10 @@ export namespace Components {
     interface CmWeather {
         "data": string;
     }
+}
+export interface CmMenuItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCmMenuItemElement;
 }
 export interface CmWeatherCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -77,8 +83,11 @@ declare namespace LocalJSX {
         "data"?: string;
     }
     interface CmMenu {
+        "opened"?: boolean;
     }
     interface CmMenuItem {
+        "data"?: string;
+        "onItemClicked"?: (event: CmMenuItemCustomEvent<string>) => void;
     }
     interface CmSunmoonimage {
     }
