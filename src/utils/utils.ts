@@ -4,4 +4,11 @@ export function determineTimeOfDay(): boolean {
   return  hours >= 6 && hours < 19;  
 }
 
-export const daysOfWeek=["SUN","MON","TUE","WED","THU","FRI","SAT"]
+export const daysOfWeek=["SUN","MON","TUE","WED","THU","FRI","SAT"];
+
+export function formatDate(date:Date):string{
+  const currentDate=new Date(date);
+  const currentDay = currentDate.getDate();
+  return `${currentDate.getMonth()+1}/${currentDay}`;
+}
+
