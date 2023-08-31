@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  position: relative;
+}
+:host([opened]) .container{
+display: block;
+}
+.container{
+  background: white;
+  width: 15rem;
+  position: absolute;
+  right: 0;
+  box-shadow: 36px 35px 47px -4px rgba(0, 0, 0, 0.07);
+  border-radius: 10px; 
+  display: none;
+  z-index: 100;
+  padding: 10px;
+  top: 40px;
+}
+button{
+  border: 0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(243, 243, 243);
+  cursor: pointer;
+}
+

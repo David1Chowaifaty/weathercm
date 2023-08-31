@@ -1,3 +1,46 @@
 :host {
   display: block;
+  
+}
+.temperature-range {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.temp-max {
+  font-size: 20px;
+}
+.temp-min {
+  color: #64748b;
+}
+.weather-button{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: 36px 35px 47px -4px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 15rem;
+  transition: all 0.3s ease-in-out;  
+  height: 18rem;
+}
+.weather-button:hover{
+  transform: scale(1.05);
+}
+.sunmoon-image{ 
+  height: 60px;
+  width: 60px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+p,h2{
+  margin: 0;
+}
+.date{
+  font-size: 16px;
+  margin-top: 20px;
 }

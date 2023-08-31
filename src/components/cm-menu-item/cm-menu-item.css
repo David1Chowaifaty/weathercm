@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding:0 10px;
+  border-radius: 5px;
+  
+}
+div:hover{
+  background-color: #f8fafc
+}
+h2{
+  font-size: 15px;
+}
+p{
+  font-size: 15px;
+}

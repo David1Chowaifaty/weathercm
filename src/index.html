@@ -5,13 +5,127 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stencil Component Starter</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <script type="module" src="/build/assignment.esm.js"></script>
   <script nomodule src="/build/assignment.js"></script>
+  <style>
+    * {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      box-sizing: border-box;
+      padding: 0;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 0;
+    }
+
+    .main {
+      height: min-content;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      background: #f8fafcd7;
+      padding: 0 1rem;
+      justify-content: space-between;
+      z-index: 50;
+    }
+
+    header h3 {
+      margin: 0;
+    }
+
+    #others {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 30px;
+      justify-content: space-evenly;
+    }
+  </style>
 </head>
-<cm-weather></cm-weather>
 
 <body>
+  <header>
+    <h3>Weather app</h3>
+    <cm-menu></cm-menu>
+  </header>
+  <main>
+    <section id="main">
+      <!-- <cm-mainwweather
+        data="{&quot;humidity&quot;:59,&quot;feels_like&quot;:19.57,&quot;temp_max&quot;:19.98,&quot;temp_min&quot;:19.43,&quot;description&quot;:&quot;clear sky&quot;,&quot;date&quot;:&quot;2023-08-30T18:00:00.000Z&quot;,&quot;windspeed&quot;:0.86}"></cm-mainwweather> -->
+    </section>
+    <section id="others">
+    </section>
+  </main>
+  <script>
+    const main = document.querySelector('#main');
+    const others = document.querySelector("#others");
+    const menu = document.querySelector("cm-menu")
+    const apikey = "2cb0ef490184d5a576043727f00691b5"
+    let lat = 33.8333;
+    let lon = 35.8333;
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+      });
+    }
+    async function fetchWeather(lat, lon) {
+      const url1 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}&units=metric`
+      const url2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apikey}&units=metric`
+      const res = await fetch(url2);
+      const data = await res.json();
+      let result = data.list.reduce((acc, current) => {
+        const currentDate = new Date(current.dt_txt);
+        const existingEntry = acc.find(entry => entry.date.getDay() === currentDate.getDay());
+        if (!existingEntry) {
+          acc.push({
+            humidity: current.main.humidity,
+            feels_like: current.main.feels_like,
+            temp_max: current.main.temp_max,
+            temp_min: current.main.temp_min,
+            description: current.weather[0].description,
+            date: currentDate,
+            windspeed: current.wind.speed
+          });
+        }
+        return acc;
+      }, []);
+
+      result.map((d) => {
+        if (new Date(d.date).getDay() === new Date().getDay()) {
+          const cmWeather = document.createElement('cm-mainweather');
+          cmWeather.data = JSON.stringify(d);
+          main.appendChild(cmWeather)
+        } else {
+          const cmWeather = document.createElement('cm-weather');
+          cmWeather.data = JSON.stringify(d);
+          others.appendChild(cmWeather)
+          const menuItem = document.createElement("cm-menu-item")
+          menuItem.data = JSON.stringify(d);
+          menu.appendChild(menuItem);
+        }
+      })
+    }
+    fetchWeather(lat, lon)
+
+  </script>
 </body>
 
 </html>
