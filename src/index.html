@@ -46,15 +46,15 @@
     header h3 {
       margin: 0;
     }
+
     #others {
-display: flex;
-gap: 10px;
-flex-wrap: wrap;
-align-items: center;
-margin-top: 30px;
-justify-content: space-evenly;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 30px;
+      justify-content: space-evenly;
     }
-    
   </style>
 </head>
 
@@ -107,7 +107,7 @@ justify-content: space-evenly;
 
       result.map((d) => {
         if (new Date(d.date).getDay() === new Date().getDay()) {
-          const cmWeather = document.createElement('cm-mainwweather');
+          const cmWeather = document.createElement('cm-mainweather');
           cmWeather.data = JSON.stringify(d);
           main.appendChild(cmWeather)
         } else {

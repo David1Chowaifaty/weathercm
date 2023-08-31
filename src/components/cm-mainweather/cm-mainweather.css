@@ -105,6 +105,12 @@
 @media only screen and (min-width: 992px) {
   :host {
     width: 70%;
+    padding: 2rem;
+    height: 10rem;
+  }
+  .sunmoon .icon {
+    height: 100px;
+    width: 100px;
   }
 }
 

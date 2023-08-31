@@ -9,7 +9,7 @@ export namespace Components {
     interface CmDate {
         "date": string;
     }
-    interface CmMainwweather {
+    interface CmMainweather {
         "data": string;
     }
     interface CmSunmoonimage {
@@ -32,11 +32,11 @@ declare global {
         prototype: HTMLCmDateElement;
         new (): HTMLCmDateElement;
     };
-    interface HTMLCmMainwweatherElement extends Components.CmMainwweather, HTMLStencilElement {
+    interface HTMLCmMainweatherElement extends Components.CmMainweather, HTMLStencilElement {
     }
-    var HTMLCmMainwweatherElement: {
-        prototype: HTMLCmMainwweatherElement;
-        new (): HTMLCmMainwweatherElement;
+    var HTMLCmMainweatherElement: {
+        prototype: HTMLCmMainweatherElement;
+        new (): HTMLCmMainweatherElement;
     };
     interface HTMLCmSunmoonimageElement extends Components.CmSunmoonimage, HTMLStencilElement {
     }
@@ -58,7 +58,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "cm-date": HTMLCmDateElement;
-        "cm-mainwweather": HTMLCmMainwweatherElement;
+        "cm-mainweather": HTMLCmMainweatherElement;
         "cm-sunmoonimage": HTMLCmSunmoonimageElement;
         "cm-temperature": HTMLCmTemperatureElement;
         "cm-weather": HTMLCmWeatherElement;
@@ -68,7 +68,7 @@ declare namespace LocalJSX {
     interface CmDate {
         "date"?: string;
     }
-    interface CmMainwweather {
+    interface CmMainweather {
         "data"?: string;
     }
     interface CmSunmoonimage {
@@ -82,7 +82,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "cm-date": CmDate;
-        "cm-mainwweather": CmMainwweather;
+        "cm-mainweather": CmMainweather;
         "cm-sunmoonimage": CmSunmoonimage;
         "cm-temperature": CmTemperature;
         "cm-weather": CmWeather;
@@ -93,7 +93,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "cm-date": LocalJSX.CmDate & JSXBase.HTMLAttributes<HTMLCmDateElement>;
-            "cm-mainwweather": LocalJSX.CmMainwweather & JSXBase.HTMLAttributes<HTMLCmMainwweatherElement>;
+            "cm-mainweather": LocalJSX.CmMainweather & JSXBase.HTMLAttributes<HTMLCmMainweatherElement>;
             "cm-sunmoonimage": LocalJSX.CmSunmoonimage & JSXBase.HTMLAttributes<HTMLCmSunmoonimageElement>;
             "cm-temperature": LocalJSX.CmTemperature & JSXBase.HTMLAttributes<HTMLCmTemperatureElement>;
             "cm-weather": LocalJSX.CmWeather & JSXBase.HTMLAttributes<HTMLCmWeatherElement>;

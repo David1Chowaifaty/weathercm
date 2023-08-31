@@ -3,11 +3,11 @@ import { Weather } from '../../model/Weather';
 import { daysOfWeek } from '../../utils/utils';
 
 @Component({
-  tag: 'cm-mainwweather',
-  styleUrl: 'cm-mainwweather.css',
+  tag: 'cm-mainweather',
+  styleUrl: 'cm-mainweather.css',
   shadow: true,
 })
-export class CmMainwweather {
+export class CmMainweather {
   @Prop({ reflect: true, mutable: true }) data: string;
   @State() weather: Weather;
   @Listen('dayclicked', { target: 'body' })
