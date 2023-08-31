@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CmDate {
+    }
     interface CmMainwweather {
         "data": string;
     }
@@ -23,6 +25,12 @@ export interface CmWeatherCustomEvent<T> extends CustomEvent<T> {
     target: HTMLCmWeatherElement;
 }
 declare global {
+    interface HTMLCmDateElement extends Components.CmDate, HTMLStencilElement {
+    }
+    var HTMLCmDateElement: {
+        prototype: HTMLCmDateElement;
+        new (): HTMLCmDateElement;
+    };
     interface HTMLCmMainwweatherElement extends Components.CmMainwweather, HTMLStencilElement {
     }
     var HTMLCmMainwweatherElement: {
@@ -48,6 +56,7 @@ declare global {
         new (): HTMLCmWeatherElement;
     };
     interface HTMLElementTagNameMap {
+        "cm-date": HTMLCmDateElement;
         "cm-mainwweather": HTMLCmMainwweatherElement;
         "cm-sunmoonimage": HTMLCmSunmoonimageElement;
         "cm-temperature": HTMLCmTemperatureElement;
@@ -55,6 +64,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface CmDate {
+    }
     interface CmMainwweather {
         "data"?: string;
     }
@@ -68,6 +79,7 @@ declare namespace LocalJSX {
         "onDayclicked"?: (event: CmWeatherCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
+        "cm-date": CmDate;
         "cm-mainwweather": CmMainwweather;
         "cm-sunmoonimage": CmSunmoonimage;
         "cm-temperature": CmTemperature;
@@ -78,6 +90,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "cm-date": LocalJSX.CmDate & JSXBase.HTMLAttributes<HTMLCmDateElement>;
             "cm-mainwweather": LocalJSX.CmMainwweather & JSXBase.HTMLAttributes<HTMLCmMainwweatherElement>;
             "cm-sunmoonimage": LocalJSX.CmSunmoonimage & JSXBase.HTMLAttributes<HTMLCmSunmoonimageElement>;
             "cm-temperature": LocalJSX.CmTemperature & JSXBase.HTMLAttributes<HTMLCmTemperatureElement>;
