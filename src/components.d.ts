@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface CmDate {
+        "date": string;
     }
     interface CmMainwweather {
         "data": string;
@@ -65,6 +66,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface CmDate {
+        "date"?: string;
     }
     interface CmMainwweather {
         "data"?: string;

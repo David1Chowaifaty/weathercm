@@ -44,7 +44,9 @@ export class CmMainwweather {
               <div class="weather-icon">
                 <cm-sunmoonimage class="icon" />
               </div>
-              <h2 class="date">{this.renderDate(this.weather.date)}</h2>
+              <div class="date">
+                <cm-date date={this.weather.date.toString()}></cm-date>
+              </div>
             </div>
             <p class="weather-description">{this.weather.description}</p>
             <div class={'weather-container'}>
