@@ -3,11 +3,11 @@ import { Weather } from '../../model/Weather';
 import { daysOfWeek } from '../../utils/utils';
 
 @Component({
-  tag: 'cm-mainwweather',
-  styleUrl: 'cm-mainwweather.css',
+  tag: 'cm-mainweather',
+  styleUrl: 'cm-mainweather.css',
   shadow: true,
 })
-export class CmMainwweather {
+export class CmMainweather {
   @Prop({ reflect: true, mutable: true }) data: string;
   @State() weather: Weather;
   @Listen('dayclicked', { target: 'body' })
@@ -48,7 +48,9 @@ export class CmMainwweather {
               <div class="weather-icon">
                 <cm-sunmoonimage class="icon" />
               </div>
-              <h2 class="date">{this.renderDate(this.weather.date)}</h2>
+              <div class="date">
+                <cm-date date={this.weather.date.toString()}></cm-date>
+              </div>
             </div>
             <p class="weather-description">{this.weather.description}</p>
             <div class={'weather-container'}>

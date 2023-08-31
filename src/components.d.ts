@@ -6,7 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface CmMainwweather {
+    interface CmDate {
+        "date": string;
+    }
+    interface CmMainweather {
         "data": string;
     }
     interface CmMenu {
@@ -33,11 +36,17 @@ export interface CmWeatherCustomEvent<T> extends CustomEvent<T> {
     target: HTMLCmWeatherElement;
 }
 declare global {
-    interface HTMLCmMainwweatherElement extends Components.CmMainwweather, HTMLStencilElement {
+    interface HTMLCmDateElement extends Components.CmDate, HTMLStencilElement {
     }
-    var HTMLCmMainwweatherElement: {
-        prototype: HTMLCmMainwweatherElement;
-        new (): HTMLCmMainwweatherElement;
+    var HTMLCmDateElement: {
+        prototype: HTMLCmDateElement;
+        new (): HTMLCmDateElement;
+    };
+    interface HTMLCmMainweatherElement extends Components.CmMainweather, HTMLStencilElement {
+    }
+    var HTMLCmMainweatherElement: {
+        prototype: HTMLCmMainweatherElement;
+        new (): HTMLCmMainweatherElement;
     };
     interface HTMLCmMenuElement extends Components.CmMenu, HTMLStencilElement {
     }
@@ -70,7 +79,8 @@ declare global {
         new (): HTMLCmWeatherElement;
     };
     interface HTMLElementTagNameMap {
-        "cm-mainwweather": HTMLCmMainwweatherElement;
+        "cm-date": HTMLCmDateElement;
+        "cm-mainweather": HTMLCmMainweatherElement;
         "cm-menu": HTMLCmMenuElement;
         "cm-menu-item": HTMLCmMenuItemElement;
         "cm-sunmoonimage": HTMLCmSunmoonimageElement;
@@ -79,7 +89,10 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface CmMainwweather {
+    interface CmDate {
+        "date"?: string;
+    }
+    interface CmMainweather {
         "data"?: string;
     }
     interface CmMenu {
@@ -99,7 +112,8 @@ declare namespace LocalJSX {
         "onDayclicked"?: (event: CmWeatherCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
-        "cm-mainwweather": CmMainwweather;
+        "cm-date": CmDate;
+        "cm-mainweather": CmMainweather;
         "cm-menu": CmMenu;
         "cm-menu-item": CmMenuItem;
         "cm-sunmoonimage": CmSunmoonimage;
@@ -111,7 +125,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "cm-mainwweather": LocalJSX.CmMainwweather & JSXBase.HTMLAttributes<HTMLCmMainwweatherElement>;
+            "cm-date": LocalJSX.CmDate & JSXBase.HTMLAttributes<HTMLCmDateElement>;
+            "cm-mainweather": LocalJSX.CmMainweather & JSXBase.HTMLAttributes<HTMLCmMainweatherElement>;
             "cm-menu": LocalJSX.CmMenu & JSXBase.HTMLAttributes<HTMLCmMenuElement>;
             "cm-menu-item": LocalJSX.CmMenuItem & JSXBase.HTMLAttributes<HTMLCmMenuItemElement>;
             "cm-sunmoonimage": LocalJSX.CmSunmoonimage & JSXBase.HTMLAttributes<HTMLCmSunmoonimageElement>;

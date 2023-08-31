@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { CmMainwweather } from '../cm-mainwweather';
+import { CmDate } from '../cm-date';
 
-describe('cm-mainwweather', () => {
+describe('cm-date', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [CmMainwweather],
-      html: `<cm-mainwweather></cm-mainwweather>`,
+      components: [CmDate],
+      html: `<cm-date></cm-date>`,
     });
     expect(page.root).toEqualHtml(`
-      <cm-mainwweather>
+      <cm-date>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </cm-mainwweather>
+      </cm-date>
     `);
   });
 });

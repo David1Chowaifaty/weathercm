@@ -1,4 +1,6 @@
-import { Component, Host, Listen, Prop, h } from '@stencil/core';
+import { Component, Host, Listen, Prop, State, h } from '@stencil/core';
+import { Weather } from '../../model/Weather';
+import { daysOfWeek } from '../../utils/utils';
 
 @Component({
   tag: 'cm-menu',
@@ -7,9 +9,12 @@ import { Component, Host, Listen, Prop, h } from '@stencil/core';
 })
 export class CmMenu {
   @Prop({ reflect: true, mutable: true }) opened: boolean = false;
+  @State() selectedDate: string = '';
   @Listen('itemClicked', { target: 'body' })
-  handleMenuItemClicked(){
-this.toggleOpened()
+  handleMenuItemClicked(ev: CustomEvent) {
+    const data = JSON.parse(ev.detail) as Weather;
+    this.selectedDate = daysOfWeek[new Date(data.date).getDay()];
+    this.toggleOpened();
   }
 
   toggleOpened() {
@@ -19,7 +24,7 @@ this.toggleOpened()
   render() {
     return (
       <Host>
-        <button onClick={this.toggleOpened.bind(this)}>Choose a date</button>
+        <button onClick={this.toggleOpened.bind(this)}>{this.selectedDate !== '' ? this.selectedDate : 'Choose a date'}</button>
         <div class={'container'}>
           <slot></slot>
         </div>
